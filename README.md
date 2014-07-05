@@ -1,5 +1,10 @@
 get-query-modifier
 ==================
+[![Build Status](https://travis-ci.org/yamadapc/get-query-modifier.svg?branch=master)](https://travis-ci.org/yamadapc/get-query-modifier)
+[![Coverage Status](https://coveralls.io/repos/yamadapc/get-query-modifier/badge.png)](https://coveralls.io/r/yamadapc/get-query-modifier)
+[![devDependency Status](https://david-dm.org/yamadapc/get-query-modifier/dev-status.svg)](https://david-dm.org/yamadapc/get-query-modifier#info=devDependencies)
+
+- - -
 
 Helper for parsing mongoose mongodb query operators.
 
@@ -12,7 +17,7 @@ Manipulates an object representation of a querystring, extracting its
 Note this function isn't pure and does delete the operators from the `query`
 parameter after reading them.
 
-### Params: 
+### Params:
 
 * **Object** *query* The querystring representation to manipulate
 
