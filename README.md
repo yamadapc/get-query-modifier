@@ -21,6 +21,10 @@ parameter after reading them.
 
 * **Object** *query* The querystring representation to manipulate
 
+### Return:
+
+* **Function** queryModifier The `mongoose.Query` modifier function,
+
 ### Example:
 
 ```javascript
