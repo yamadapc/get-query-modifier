@@ -46,11 +46,11 @@ describe('getQueryModifier(query)', function() {
     };
     modifier(query);
 
-    assert(skipped === 40);
-    assert(limited === 20);
-    assert(q.$skip === undefined);
-    assert(q.$page === undefined);
-    assert(q.$limit === undefined);
+    assert(skipped === 40, 'skipped 40');
+    assert(limited === 20, 'limitted 20');
+    assert(q.$skip === undefined, 'deleted query.$skip');
+    assert(q.$page === undefined, 'deleted query.$page');
+    assert(q.$limit === undefined, 'deleted query.$limit');
   });
 
   it('extracts `$select` operators, joining them if they are an array', function() {
@@ -77,5 +77,48 @@ describe('getQueryModifier(query)', function() {
 
     assert(selected2 === 'here we are');
     assert(q2.$select === undefined);
+  });
+
+  it('accepts an `options.ignore` parameter with operators to ignore', function() {
+    var q = {
+      $select: '+something -here',
+      $skip: 10
+    };
+
+    var modifier = getQueryModifier(q, { ignore: { $select: true } });
+
+    assert(q.$skip === undefined, 'deleted query.$skip');
+    assert(q.$select === '+something -here', 'ignored query.$select');
+
+    var skipped;
+    var query = {
+      select: function() { throw new Error('Selected'); },
+      skip: function(s) { skipped = s; return this; }
+    };
+
+    modifier(query);
+    assert(skipped === 10);
+  });
+
+  it('accepts an `options.allow` parameter with operators to allow forcefully', function() {
+    var q = {
+      $custom: 'muhahah',
+      $limit: 10
+    };
+
+    var modifier = getQueryModifier(q, { allow: ['$custom'] });
+    assert(q.$custom === undefined, 'deleted query.$custom');
+    assert(q.$limit === undefined, 'deleted query.$limit');
+
+    var customed;
+    var limited;
+    var query = {
+      custom: function(c) { customed = c; return this; },
+      limit: function(l) { limited = l; return this; }
+    };
+
+    modifier(query);
+    assert(limited === 10, 'limited');
+    assert(customed === 'muhahah', '"customed"');
   });
 });
