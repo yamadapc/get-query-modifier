@@ -8,7 +8,7 @@ get-query-modifier
 
 Helper for parsing mongoose mongodb query operators.
 
-## getQueryModifier(query)
+## getQueryModifier(query, [options])
 
 Manipulates an object representation of a querystring, extracting its
 `mongoose` query operators and returning a function to attach them to a
@@ -20,6 +20,9 @@ parameter after reading them.
 ### Params:
 
 * **Object** *query* The querystring representation to manipulate
+* **Object** *[options]* An options object
+* **Object** *[options.ignore]* An object with the keys corresponding of the
+* **Array.<String>** *[options.allow]* An array of operators to parse
 
 ### Return:
 
@@ -41,6 +44,8 @@ app.get('/api/users', function(req, res) {
   });
 });
 ```
+
+See the test for more elaborate examples.
 
 ## License
 
