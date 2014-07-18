@@ -127,4 +127,31 @@ describe('getQueryModifier(query)', function() {
     assert(limited === 10, 'limited');
     assert(customed === 'muhahah', '"customed"');
   });
+
+  it('accepts an `options.deleteIgnored` parameter', function() {
+    var q = {
+      $skip: 10,
+      $limit: 10
+    };
+
+    var modifier = getQueryModifier(q, {
+      ignore: {
+        $limit: true
+      },
+      deleteIgnored: true
+    });
+    assert(q.$custom === undefined, 'deleted query.$custom');
+    assert(q.$limit === undefined, 'deleted query.$limit');
+
+    var skipped;
+    var limited;
+    var query = {
+      skip: function(s) { skipped = s; return this; },
+      limit: function(l) { limited = l; return this; }
+    };
+
+    modifier(query);
+    assert(limited === undefined, 'didn\'t limit');
+    assert(skipped === 10, 'skipped');
+  });
 });
