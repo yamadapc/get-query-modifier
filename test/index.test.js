@@ -3,6 +3,12 @@ var assert = require('assert');
 var getQueryModifier = require('..');
 
 describe('getQueryModifier(query)', function() {
+  it('doesn\'t do anything if query is undefined', function() {
+    var modifier = getQueryModifier(undefined);
+    var query = {};
+    assert(modifier(query) === query);
+  });
+
   it('doesn\'t do anything if query hasn\'t got any operators', function() {
     var q = {
       something: 'here'
