@@ -50,7 +50,28 @@ app.get('/api/users', function(req, res) {
 });
 ```
 
-See the test for more elaborate examples.
+See the tests for more elaborate examples.
+
+## getQueryModifier.middleware([options])
+
+A connect middleware for parsing and using mongodb query operators with
+mongoose given an object representation of a query.
+
+### Params:
+
+* **Object** *[options]* An options object which will simply be passed onto
+  `getQueryModifier(req.query, options)`
+
+### Return:
+
+* **Function** mdw The middleware function
+
+### Example:
+
+```javascript
+var app = require('./app'); // some express app
+app.use(getQueryModifier.middleware());
+```
 
 ## License
 
