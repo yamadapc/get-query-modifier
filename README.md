@@ -31,11 +31,13 @@ implement calls with mongoose's `Query.prototype.limit` and
 `Query.prototype.skip`, as follows:
 
 ```javascript
+app.get('/api/comments', function(req, res) {
   Comment
     .find()
     .skip(req.query.page * req.query.items_per_page)
     .limit(req.query.items_per_page)
     .exec(/**/);
+});
 ```
 
 Or something like that. You'd however be creating your own query syntax. We know
@@ -54,6 +56,22 @@ known standard set of operators, which come out-of-the-box in mongodb.
 It does it by taking the query object as its first argument and returning a
 modifier function, which handles calling each of these deferred `Query` method
 calls once your `Query` instance is available.
+
+```javascript
+app.get('/api/comments', function(req, res) {
+  var modifier = getQueryModifier(req.query);
+  // `req.query` had its `$limit`, `$sort`, `$page`, `$skip` and `$select`
+  // fields striped from it and translated into a set of method calls in
+  // `modifier`
+
+  var query = Comment
+    .find(req.query) // we can create an arbitrary Query, re-using `req.query`
+    .lean();
+
+  modifier(query) // modifier applies the extracted operators to the Query
+    .exec(/**/);
+});
+```
 
 ## getQueryModifier(query, [options])
 
