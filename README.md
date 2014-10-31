@@ -3,6 +3,7 @@ get-query-modifier
 [![Build Status](https://travis-ci.org/yamadapc/get-query-modifier.svg?branch=master)](https://travis-ci.org/yamadapc/get-query-modifier)
 [![Coverage Status](https://coveralls.io/repos/yamadapc/get-query-modifier/badge.png)](https://coveralls.io/r/yamadapc/get-query-modifier)
 [![devDependency Status](https://david-dm.org/yamadapc/get-query-modifier/dev-status.svg)](https://david-dm.org/yamadapc/get-query-modifier#info=devDependencies)
+[![npm downloads per month](http://img.shields.io/npm/dm/get-query-modifier.svg)](https://www.npmjs.org/package/get-query-modifier)
 
 - - -
 
