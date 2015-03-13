@@ -41,10 +41,13 @@ app.get('/api/comments', function(req, res) {
 });
 ```
 
-Or something like that. You'd however be creating your own query syntax. We know
-however, you can get a **lot** more power by using mongodb's default query
-syntax, extending it where mongoose/mongodb expose a slightly different API,
-such as `.limit`, `.skip` etc.
+Or something like that.
+
+You'd be, however, recreating your own query syntax.
+
+You can get a **lot** more power by using mongodb's default query syntax,
+extending it where mongoose/mongodb expose a slightly different API, such
+as `.limit`, `.skip` etc.
 
 **get-query-modifier** solves this solution by extracting the _operators_
 `$sort`, `$limit`, `$skip`, `$page` and `$select` (plus any operator you want to
