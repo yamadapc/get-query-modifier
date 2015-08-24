@@ -90,12 +90,14 @@ parameter after reading them.
 
 * **Object** *query* The querystring representation to manipulate
 * **Object** *[options]* An options object
+* **Object** *[options.defaults]* An object with defaults for the valid
+  operators
 * **Object** *[options.ignore]* An object with the properties corresponding to
   the ignored operators set to true
 * **Boolean** *[options.deleteIgnored=false]* Whether to delete the ignored
   operators from the `query` object
-* **Array.<String>** *[options.allow]* An array of operators to parse regardless
-  of the plugin's default `VALID_OPERATORS.`
+* **Array.<String>** *[options.allow]* An array of operators to parse in
+  addition to the plugin's default `VALID_OPERATORS.`
 
 ### Return:
 
