@@ -45,7 +45,7 @@
   "devDependencies": {
     "blanket": "^1.1.6",
     "coveralls": "^2.11.0",
-    "mocha": "2.1.0",
+    "mocha": "2.4.3",
     "mocha-spec-cov-alt": "^0.2.4"
   }
 }
