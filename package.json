@@ -43,9 +43,9 @@
     }
   },
   "devDependencies": {
-    "blanket": "^1.1.6",
+    "blanket": "^1.1.7",
     "coveralls": "^2.11.0",
-    "mocha": "2.1.0",
-    "mocha-spec-cov-alt": "^0.2.4"
+    "mocha": "^2.4.5",
+    "mocha-spec-cov-alt": "^1.1.1"
   }
 }
