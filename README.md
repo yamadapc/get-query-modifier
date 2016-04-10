@@ -49,7 +49,7 @@ You can get a **lot** more power by using mongodb's default query syntax,
 extending it where mongoose/mongodb expose a slightly different API, such
 as `.limit`, `.skip` etc.
 
-**get-query-modifier** solves this solution by extracting the _operators_
+**get-query-modifier** solves this problem by extracting the _operators_
 `$sort`, `$limit`, `$skip`, `$page` and `$select` (plus any operator you want to
 support by setting `options.allow`), and translating them into a set of method
 calls to the query object (calls to `Query.prototype.sort`,
